@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"uri": "vscode-remote://codespaces+upgraded-train-qrv5j7gg5472wx6/workspaces/vscode-remote-try-java/Chessboard/chessboard"
+		}
+	],
+	"remoteAuthority": "codespaces+upgraded-train-qrv5j7gg5472wx6",
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic"
+	}
+}
