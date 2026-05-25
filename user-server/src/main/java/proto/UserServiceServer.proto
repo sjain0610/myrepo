@@ -1,0 +1,85 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.stackroute.grpc;
+
+import "google/protobuf/empty.proto";
+
+message LoginRequest{
+  string username=1;
+  string password=2;
+  string role=3;
+}
+message LoginResponse{
+  string responseMessage=2;
+}
+
+message  UpdateResponse{
+  string responseMessage=2;
+}
+
+message Customer {
+  int64 custId=1;
+  string name=2;
+  string emailId=3;
+  string mobNo=4;
+  string userName=5;
+  string password=6;
+  string streetAddress=7;
+  string city=8;
+  string state=9;
+  string pincode=10;
+}
+
+message Bank{
+  int64 bankId=1;
+  string bankName=2;
+  string username=3;
+  string password=4;
+}
+
+message Branch{
+  string ifscCode=1;
+  int64 bankId=2;
+  string streetAddress=3;
+  string city=4;
+  string state=5;
+  string pincode=6;
+}
+
+message BankEmp{
+  int64 empId=1;
+  string username=2;
+  string password=3;
+  string ifscCode=4;
+}
+
+message CustomerByUsername{
+  string username=1;
+}
+message BankByUsername{
+  string username=1;
+}
+message BankEmpByUsername{
+  string username=1;
+}
+message BranchByIfscCode{
+  string IfscCode=1;
+}
+
+
+
+service userServer {
+  rpc createCustomer(Customer) returns (Customer);
+  rpc createBank(Bank) returns (Bank);
+  rpc createBranch(Branch) returns (Branch);
+  rpc createBankEmp(BankEmp) returns (BankEmp);
+  rpc userLogin(LoginRequest) returns(LoginResponse);
+  rpc updateBankPassword(Bank) returns (UpdateResponse);
+  rpc updateCustomerDetails(Customer) returns (UpdateResponse);
+  rpc updateBranchDetails(Branch) returns (UpdateResponse);
+  rpc updateBanKEmpPassword(BankEmp) returns (UpdateResponse);
+  rpc getBank(BankByUsername) returns(Bank);
+  rpc getCustomer(CustomerByUsername) returns(Customer);
+  rpc getBankEmp(BankEmpByUsername) returns(BankEmp);
+  rpc getBranch(BranchByIfscCode) returns(Branch);
+}

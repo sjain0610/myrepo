@@ -1,0 +1,46 @@
+syntax="proto3";
+
+package  com.stackroute.bankrush;
+
+option java_multiple_files = true;
+
+message QueryRequest{
+  string customerId=1;
+  string queryId=2;
+  string queryStatus=3;
+  string queryDes=4;
+  string queryCreationDate=5;
+  string querySubject=6;
+
+}
+
+message QueryResponse{
+
+  string customerId=1;
+  string queryId=2;
+  string queryStatus=3;
+  string queryDes=4;
+  string queryCreationDate=5;
+  string querySubject=6;
+
+
+}
+message  updateRequest{
+  string queryId=1;
+  string  queryStatus=2;
+
+}
+message  updateResponse{
+
+  string queryStatus=1;
+}
+message  QueryIdRequest{
+  string queryId=1;
+}
+
+service QueryServise{
+  rpc getQueryInfo(QueryRequest) returns(QueryResponse);
+  rpc  getbyQueryId(QueryIdRequest) returns(QueryResponse);
+  rpc updateQueryStatus(updateRequest) returns(updateResponse);
+}
+
